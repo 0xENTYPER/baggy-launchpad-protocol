@@ -28,9 +28,13 @@ The protocol turns those concerns into one explicit lifecycle shared by contract
 
 ## Product context
 
-![Baggy launch entry point](assets/launch-entry.png)
+![Baggy token creation flow](assets/launch-entry.png)
 
-The interface begins with wallet and network readiness because every later action depends on the signer being on the correct chain. This avoids asking for token details before the product knows whether it can execute the launch.
+The creator sees the token card and the form together. Name, ticker, description, social links, image readiness, and factory availability update the preview before a wallet signature is requested. Image validation and square cropping happen before the paid transaction path.
+
+![Baggy launch economics and final metadata preview](assets/launch-economics.png)
+
+The final step keeps the optional initial buy and launch economics beside the metadata preview. This makes the creator's transaction intent, fee model, graduation target, and missing requirements visible before execution.
 
 ## System overview
 
@@ -219,6 +223,7 @@ The launch interface follows the execution model instead of presenting one long 
 ├── README.md
 ├── assets/
 │   ├── launch-entry.png
+│   ├── launch-economics.png
 │   └── logo.png
 ├── docs/
 │   ├── architecture.md

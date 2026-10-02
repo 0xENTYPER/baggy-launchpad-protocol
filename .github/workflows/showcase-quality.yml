@@ -23,7 +23,6 @@ jobs:
         with:
           args: >-
             --no-progress
-            --exclude-mail
             --exclude 'https://x.com/.*'
             --exclude 'https://t.me/.*'
             '**/*.md'

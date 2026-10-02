@@ -6,11 +6,19 @@
 ### From wallet intent to an onchain market in one transaction.
 
 [Baggy product](https://baggyapp.win) · [Main Baggy case study](https://github.com/0xENTYPER/baggy)
+
+![Protocol](https://img.shields.io/badge/protocol-EVM-16C866) ![Execution](https://img.shields.io/badge/launch-atomic-111827) ![Scope](https://img.shields.io/badge/repository-sanitized_case_study-EFFAF3)
 </div>
 
 Baggy Launchpad Protocol is the launch and early-liquidity system behind Baggy's EVM token workflow. It coordinates metadata preparation, wallet signing, atomic token deployment, curve trading, fee accounting, launch discovery, and eventual migration into external DEX liquidity.
 
 > This repository is a public engineering case study. It contains architecture, sanitized interfaces, state models, and design rationale. Production contracts, addresses, provider configuration, deployment scripts, private economic parameters, and operational controls remain private.
+
+![Baggy launchpad product walkthrough](assets/product-tour.gif)
+
+| System | My contribution | Status | Core stack |
+| --- | --- | --- | --- |
+| Atomic token launch, bonding curve, fee accounting, and DEX graduation | Protocol architecture, client transaction model, safety boundaries, launch UX, and documentation | Production-backed case study | Solidity, TypeScript, EVM wallets, event indexing, DEX integration |
 
 ## What problem it solves
 
@@ -191,6 +199,12 @@ The most important properties are behavioral, not cosmetic:
 
 The complete threat model is documented in [`docs/security-model.md`](docs/security-model.md).
 
+Architecture decisions are recorded separately so the tradeoffs remain reviewable:
+
+- [`ADR 001: Atomic token and market creation`](docs/adr/001-atomic-launch.md)
+- [`ADR 002: Pull-based fee accounting`](docs/adr/002-pull-fee-accounting.md)
+- [`ADR 003: Explicit graduation boundary`](docs/adr/003-explicit-graduation-boundary.md)
+
 ## Verification strategy
 
 The protocol is designed around tests that protect accounting and state transitions:
@@ -221,11 +235,17 @@ The launch interface follows the execution model instead of presenting one long 
 ```text
 .
 ├── README.md
+├── SECURITY.md
 ├── assets/
 │   ├── launch-entry.png
 │   ├── launch-economics.png
+│   ├── product-tour.gif
 │   └── logo.png
 ├── docs/
+│   ├── adr/
+│   │   ├── 001-atomic-launch.md
+│   │   ├── 002-pull-fee-accounting.md
+│   │   └── 003-explicit-graduation-boundary.md
 │   ├── architecture.md
 │   ├── security-model.md
 │   └── testing-strategy.md
